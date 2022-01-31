@@ -1,0 +1,15 @@
+identifier: name: itsybitsy_nrf52840
+name: Adafruit ItsyBitsy nRF52840 express
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - adc
+  - usb_device
+  - ble
+  - ieee802154
+  - pwm
+  - watchdog

@@ -1,0 +1,6 @@
+if SHIELD_QALBLE
+
+config ZMK_KEYBOARD_NAME
+    default "QALBLE"
+
+endif

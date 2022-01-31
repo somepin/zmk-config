@@ -1,0 +1,25 @@
+/*               KEY POSITIONS
+  ╭──────────────────────────────────────────╮
+  │  0   1   2   3   4     5   6   7   8   9 │
+  │ 10  11  12  13  14    15  16  17  18  19 │
+  │ 20  21  22  23  24    25  26  27  28  29 │
+  │ 30      31      32    33      34      35 │ 
+  ╰──────────────────────────────────────────╯  */
+
+compatible = "zmk,combos";
+
+#define COMBO(NAME, BINDINGS, KEYPOS) \
+  combo_##NAME { \
+    bindings = <BINDINGS>; \
+    key-positions = <KEYPOS>; \
+  };
+
+COMBO(clkCaps,   &kp CAPS,     7  21  26)
+COMBO(wfEsc,     &kp ESC,      1   2)
+COMBO(fpTab,     &kp TAB,      2   3)
+COMBO(luDel,     &kp DEL,      6   7)
+COMBO(uyBspc,    &kp BSPC,     7   8)
+COMBO(yQuotScln, &kp SEMI,     8   9)
+COMBO(khCol,     &kp COLON,   26  27)
+COMBO(hCommEnt,  &kp RET,     27  28)
+COMBO(qplScSlp,  &kp C_SLEEP,  0  3  6  9)

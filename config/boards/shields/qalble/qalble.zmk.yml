@@ -1,0 +1,8 @@
+file_format: "1"
+id: qalble
+name: QALBLE
+type: shield
+url:
+requires: [itsybitsy_nrf52480]
+features:
+  - keys
