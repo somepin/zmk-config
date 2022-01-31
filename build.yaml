@@ -13,5 +13,5 @@
 #
 ---
 include:
-  - board: nrf52840_m2
-    shield: qaz
+  - board: itsybitsy_nrf52840
+    shield: qalble
