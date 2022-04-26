@@ -73,7 +73,7 @@
     &kp ESC    &kp Q   &kp W      &kp E   &kp R                     &kp T         &kp Y      &kp UP     &kp I       &kp ESC    
     &kp TAB    &kp A   &kp S      &kp D   &kp F                     &kp G         &kp LEFT   &kp DOWN   &kp RIGHT   &kp TAB    
     &kp LSHFT  &kp Z   &kp X      &kp C   &kp V                     &none         &kp B      &kp N      &kp M       &kp RSHFT
-    &kp LCTRL          &kp LALT           &kp SPACE                 &tog DEFAULT             &kp RALT               &kp RCTRL
+    &kp LCTRL          &kp LALT           &kp SPACE                 &tog GAMING              &kp RALT               &kp RCTRL
             >;
         };
 
@@ -107,5 +107,5 @@
             >;
             sensor-bindings = <&inc_dec_kp LC(Y) LC(Z)>;
         };
-    };
-};
+    };iii
+};softdeviceasd
