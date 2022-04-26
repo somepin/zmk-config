@@ -107,5 +107,5 @@
             >;
             sensor-bindings = <&inc_dec_kp LC(Y) LC(Z)>;
         };
-    };iii
-};softdeviceasd
+    };
+};
