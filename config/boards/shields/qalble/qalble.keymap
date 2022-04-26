@@ -3,9 +3,10 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT 0
-#define NUM_NAV 1
-#define SYM_FN  2
-#define ADJ     3
+#define GAMING  1
+#define NUM_NAV 2
+#define SYM_FN  3
+#define ADJ     4
 
 / {
     combos {
@@ -22,6 +23,7 @@
           combo_##NAME { \
             bindings = <BINDINGS>; \
             key-positions = <KEYPOS>; \
+            layers = <0 2 3 4>; \
           };
         
         COMBO(clkCaps,   &kp CAPS,     7  21  26)
@@ -32,6 +34,14 @@
         COMBO(yQuotScln, &kp SEMI,     8   9)
         COMBO(khCol,     &kp COLON,   26  27)
         COMBO(hCommEnt,  &kp RET,     27  28)
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <2 3>;
+            then-layer = <4>;
+        };
     };
 
     behaviors {
@@ -57,30 +67,43 @@
             >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
         };
+
+        gaming {
+            bindings = <
+    &kp ESC    &kp Q   &kp W      &kp E   &kp R                     &kp T         &kp Y      &kp UP     &kp I       &kp ESC    
+    &kp TAB    &kp A   &kp S      &kp D   &kp F                     &kp G         &kp LEFT   &kp DOWN   &kp RIGHT   &kp TAB    
+    &kp LSHFT  &kp Z   &kp X      &kp C   &kp V                     &none         &kp B      &kp N      &kp M       &kp RSHFT
+    &kp LCTRL          &kp LALT           &kp SPACE                 &tog DEFAULT             &kp RALT               &kp RCTRL
+            >;
+        };
+
+
         num_nav {
             bindings = <
     &kp N1     &kp N2     &kp N3     &kp N4     &kp N5              &kp N6     &kp N7       &kp N8      &kp N9       &kp N0
     &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &kp GRAVE           &kp LEFT   &kp DOWN     &kp UP      &kp RIGHT    &kp CAPS
     &kp MINUS  &kp EQUAL  &kp LPAR   &kp RPAR   &kp BSLH            &trans     &kp HOME     &kp PG_DN   &kp PG_UP    &kp END
-    &trans                &trans                &trans              &mo ADJ                 &trans                   &trans
+    &trans                &trans                &trans              &trans                  &trans                   &trans
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP>;
         };
+
         sym_fn {
             bindings = <
     &kp EXCL    &kp AT     &kp HASH   &kp DLLR    &kp PRCNT          &kp CARET   &kp AMPS    &kp ASTRK   &kp F11    &kp F12
     &kp RGUI    &kp RALT   &kp RCTRL  &kp RSHFT   &kp TILDE          &kp F1      &kp F2      &kp F3      &kp F4     &kp F5
     &kp UNDER   &kp PLUS   &kp LBKT   &kp RBKT    &kp PIPE           &kp F6      &kp F7      &kp F8      &kp F9     &kp F10
-    &trans                 &trans                 &mo ADJ            &trans                  &trans                 &trans
+    &trans                 &trans                 &trans             &trans                  &trans                 &trans
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
+
         adj {
             bindings = <
-    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4          &none         &none   &none   &none   &none
-    &bt BT_CLR    &bt BT_NXT    &bt BT_PRV    &none         &none                 &bootloader   &none   &none   &none   &none
-    &none         &none         &kp LBRC      &kp RBRC      &none                 &reset        &none   &none   &none   &none
-    &trans                      &trans                      &trans                &trans                &trans          &trans
+    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4          &none         &none         &none   &none   &none
+    &bt BT_CLR    &bt BT_NXT    &bt BT_PRV    &none         &none                 &bootloader   &tog GAMING   &none   &none   &none
+    &none         &none         &kp LBRC      &kp RBRC      &none                 &reset        &none         &none   &none   &none
+    &trans                      &trans                      &trans                &trans                      &trans          &trans
             >;
             sensor-bindings = <&inc_dec_kp LC(Y) LC(Z)>;
         };
