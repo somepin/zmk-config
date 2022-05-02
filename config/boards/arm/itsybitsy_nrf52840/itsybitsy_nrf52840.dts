@@ -15,6 +15,7 @@
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,console = &cdc_acm_uart;
+		zmk,battery = &vbatt;
 	};
 
 	leds {
@@ -24,7 +25,7 @@
 			label = "Blue LED";
 		};
 
-	vbatt {
+	vbatt: vbatt {
     compatible = "zmk,battery-voltage-divider";
     label = "VOLTAGE_DIVIDER";
     io-channels = <&adc 2>;
