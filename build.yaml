@@ -15,3 +15,5 @@
 include:
   - board: itsybitsy_nrf52840
     shield: qalble
+  - board: nice_nano_v2
+    shield: tiddlywink
