@@ -1,0 +1,8 @@
+file_format: "1"
+id: tiddlywink
+name: TIDDLYWINK
+type: shield
+url:
+requires: [pro_micro]
+features:
+  - keys
