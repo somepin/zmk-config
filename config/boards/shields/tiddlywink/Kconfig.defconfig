@@ -1,6 +1,6 @@
 if SHIELD_TIDDLYWINK
 
 config ZMK_KEYBOARD_NAME
-    default "TIDDLYWINK"
+    default "Tiddlywink"
 
 endif
