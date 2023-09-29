@@ -70,7 +70,7 @@
     &mtp LSHFT Z   &kp X      &kp C       &kp D        &kp V             &kp LG(SPACE)  &kp K    &kp H         &kp COMMA  &mtp RSHFT DOT
     &kp LCTRL      &none      &mtp LGUI ESC            &lt NUM_NAV BSPC  &lt SYM_FN SPACE        &mtp RALT RET &none      &mtp RCTRL FSLH
             >;
-            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
         gaming {
@@ -90,7 +90,7 @@
     &kp MINUS  &kp EQUAL  &kp LPAR   &kp RPAR   &kp BSLH            &trans     &kp HOME     &kp PG_DN   &kp PG_UP    &kp END
     &trans     &none      &trans                &trans              &trans                  &trans      &none        &trans
             >;
-            sensor-bindings = <&inc_dec_kp DOWN UP>;
+            sensor-bindings = <&inc_dec_kp UP DOWN>;
         };
 
         sym_fn {
@@ -100,7 +100,7 @@
     &kp UNDER   &kp PLUS   &kp LBKT   &kp RBKT    &kp PIPE           &kp F6      &kp F7      &kp F8      &kp F9     &kp F10
     &trans      &none      &trans                 &trans             &trans                  &trans      &none      &trans
             >;
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
         };
 
         adj {
@@ -110,7 +110,7 @@
     &rgb_ug RGB_SPD  &rgb_ug RGB_SPI  &kp LBRC         &kp RBRC         &rgb_ug RGB_OFF                  &sys_reset    &none         &none         &none         &none
     &trans           &none            &trans                            &trans                            &trans                      &trans        &none         &trans
             >;
-            sensor-bindings = <&inc_dec_kp LC(Y) LC(Z)>;
+            sensor-bindings = <&inc_dec_kp LC(Z) LC(Y)>;
         };
     };
 };
