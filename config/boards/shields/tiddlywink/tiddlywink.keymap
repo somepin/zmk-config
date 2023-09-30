@@ -1,7 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 #define DEFAULT 0
 #define GAMING  1
@@ -101,10 +101,10 @@
 
         adj {
             bindings = <
-    &none      &none     &none        &none        &none           &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-    &none      &none     &none        &none        &none           &bootloader  &tog GAMING  &bt BT_CLR   &bt BT_PRV   &bt BT_NXT    
-    &none      &none     &kp LBRC     &kp RBRC     &none           &sys_reset   &none        &none        &none        &none
-    &trans               &none        &trans       &trans          &trans                    &trans       &none        &trans
+    &none      &none   &none      &none      &none      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2     &bt BT_SEL 3      &bt BT_SEL 4
+    &none      &none   &none      &none      &none      &none        &none        &bt BT_CLR       &bt BT_PRV        &bt BT_NXT    
+    &none      &none   &kp LBRC   &kp RBRC   &none      &none        &none        &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG
+    &sys_reset &none   &trans                &trans     &trans                    &tog GAMING      &none             &bootloader
             >;
             sensor-bindings = <&inc_dec_kp LC(Z) LC(Y)>;
         };
