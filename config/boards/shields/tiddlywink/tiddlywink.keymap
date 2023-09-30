@@ -9,10 +9,6 @@
 #define SYM_FN  3
 #define ADJ     4
 
-&led_strip {
-    chain-length = <10>;
-};
-
 / {
     combos {
         /* Key positions
@@ -105,10 +101,10 @@
 
         adj {
             bindings = <
-    &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF  &rgb_ug RGB_ON                   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-    &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFR  &rgb_ug RGB_COLOR_HSB(0,100,40)  &bootloader   &tog GAMING   &bt BT_CLR    &bt BT_PRV    &bt BT_NXT    
-    &rgb_ug RGB_SPD  &rgb_ug RGB_SPI  &kp LBRC         &kp RBRC         &rgb_ug RGB_OFF                  &sys_reset    &none         &none         &none         &none
-    &trans           &none            &trans                            &trans                            &trans                      &trans        &none         &trans
+    &none      &none     &none        &none        &none           &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+    &none      &none     &none        &none        &none           &bootloader  &tog GAMING  &bt BT_CLR   &bt BT_PRV   &bt BT_NXT    
+    &none      &none     &kp LBRC     &kp RBRC     &none           &sys_reset   &none        &none        &none        &none
+    &trans               &none        &trans       &trans          &trans                    &trans       &none        &trans
             >;
             sensor-bindings = <&inc_dec_kp LC(Z) LC(Y)>;
         };
