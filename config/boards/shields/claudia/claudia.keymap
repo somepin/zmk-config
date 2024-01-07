@@ -61,10 +61,10 @@
 
         default_layer {
             bindings = <
-    &kp Q          &kp W      &kp F       &kp P        &kp B             &kp J          &kp L    &kp U         &kp Y      &kp SQT
-    &kp A          &kp R      &kp S       &kp T        &kp G             &kp M          &kp N    &kp E         &kp I      &kp O
-    &mtp LSHFT Z   &kp X      &kp C       &kp D        &kp V             &kp K          &kp H    &kp COMMA     &kp DOT    &kp FSLH  
-                              &mtp LGUI ESC            &lt NUM_NAV BSPC  &lt SYM_FN SPACE        &mtp RALT RET
+    &kp Q         &kp W        &kp F          &kp P         &kp B             &kp J          &kp L         &kp U          &kp Y        &kp SQT
+    &mtp LGUI A   &mtp LALT R  &mtp LCTRL S   &mtp LSHFT T  &kp G             &kp M          &mtp RSHFT N  &mtp RCTRL E   &mtp RALT I  &mtp RGUI O
+    &kp Z         &kp X        &kp C          &kp D         &kp V             &kp K          &kp H         &kp COMMA      &kp DOT      &kp FSLH  
+                               &mtp LGUI ESC               &lt NUM_NAV BSPC   &lt SYM_FN SPACE             &mtp RALT RET
             >;
         };
 
@@ -72,7 +72,7 @@
             bindings = <
     &kp ESC    &kp Q   &kp W      &kp E   &kp R                     &kp T         &kp Y      &kp UP     &kp I       &kp ESC    
     &kp TAB    &kp A   &kp S      &kp D   &kp F                     &kp G         &kp LEFT   &kp DOWN   &kp RIGHT   &kp TAB    
-    &kp LSHFT  &kp Z   &kp X      &kp C   &kp V                     &kp B         &kp N      &kp M      &none       &kp RSHFT
+    &kp LSHFT  &kp Z   &kp X      &kp C   &kp V                     &kp B         &kp N      &kp M      &kp N       &kp RSHFT
                        &kp LALT           &kp SPACE                 &tog GAMING              &kp RALT
             >;
         };
