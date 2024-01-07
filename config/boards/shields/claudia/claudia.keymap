@@ -33,8 +33,8 @@
         COMBO(luDel,     &kp DEL,      6   7)
         COMBO(uyBspc,    &kp BSPC,     7   8)
         COMBO(yQuotScln, &kp SEMI,     8   9)
-        COMBO(khCol,     &kp COLON,   26  27)
-        COMBO(hCommEnt,  &kp RET,     27  28)
+        COMBO(khCol,     &kp COLON,   25  26)
+        COMBO(hCommEnt,  &kp RET,     26  27)
     };
 
     conditional_layers {
