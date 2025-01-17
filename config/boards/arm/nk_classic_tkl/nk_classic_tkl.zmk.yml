@@ -1,0 +1,11 @@
+file_format: "1"
+id: nk_classic_tkl
+name: nk_classic_tkl
+type: board
+arch: arm
+features:
+  - keys
+  - underglow
+outputs:
+  - usb
+url: 

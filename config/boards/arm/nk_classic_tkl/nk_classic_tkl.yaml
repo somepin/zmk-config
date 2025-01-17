@@ -1,0 +1,12 @@
+identifier: nk_classic_tkl
+name: nk_classic_tkl
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - adc
+  - usb_device
+  - pwm
+  - watchdog

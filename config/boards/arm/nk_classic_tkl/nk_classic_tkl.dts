@@ -1,0 +1,136 @@
+/*
+ * Copyright (c) 2025 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/dts-v1/;
+#include <st/f0/stm32f072Xb.dtsi>
+#include <st/f0/stm32f072v(8-b)tx-pinctrl.dtsi>
+#include <dt-bindings/led/led.h>
+
+#include "nk_classic_tkl-transforms.dtsi"
+#include "nk_classic_tkl-layouts.dtsi"
+
+/ {
+    model = "nk_classic_tkl";
+    compatible = "nk_classic_tkl", "st,stm32f072";
+
+    chosen {
+        zephyr,sram = &sram0;
+        zephyr,flash = &flash0;
+        zmk,kscan = &kscan;
+        zmk,underglow = &led_strip;
+    };
+
+    kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+
+        diode-direction = "col2row";
+
+        col-gpios
+        = <&gpiob 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
+      row-gpios
+        = <&gpiob 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpiob 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpioa 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+	;
+    };
+
+};
+
+zephyr_udc0: &usb {
+    status = "okay";
+
+    pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12>;
+    pinctrl-names = "default";
+
+    num-bidir-endpoints = <4>;
+};
+
+&spi2 {
+    status = "okay";
+    pinctrl-0 = <&spi2_sck_pb13 &spi2_mosi_pb0>;
+    pinctrl-names = "default";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+
+        /* SPI */
+        reg = <0>; /* ignored, but necessary for SPI bindings */
+        spi-max-frequency = <4000000>;
+
+        /* WS2812 */
+        chain-length = <92>;
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
+
+&clk_hsi {
+    status = "okay";
+};
+
+&clk_hsi48 {
+    status = "okay";
+};
+
+&pll {
+    prediv = <1>;
+    mul = <6>;
+    clocks = <&clk_hsi>;
+    status = "okay";
+};
+
+&rcc {
+    clocks = <&pll>;
+    clock-frequency = <DT_FREQ_M(48)>;
+    ahb-prescaler = <1>;
+    apb1-prescaler = <1>;
+};
+
+
+&rtc {
+    status = "okay";
+};
+
+&flash0 {
+    /*
+     * For more information, see:
+     * http: //docs.zephyrproject.org/latest/guides/dts/index.html#flash-partitions
+     */
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        /* Set 6Kb of storage at the end of the 128Kb of flash */
+        storage_partition: partition@3e800 {
+            label = "storage";
+            reg = <0x0001e800 0x00001800>;
+        };
+    };
+};

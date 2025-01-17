@@ -1,0 +1,8 @@
+# NK_CLASSIC_TKL board configuration
+
+# Copyright (c) 2025 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config BOARD_NK_CLASSIC_TKL
+    bool "nk_classic_tkl"
+    depends on SOC_STM32F072XB
