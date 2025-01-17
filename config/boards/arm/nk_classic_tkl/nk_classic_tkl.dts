@@ -71,7 +71,7 @@ zephyr_udc0: &usb {
 
 &spi2 {
     status = "okay";
-    pinctrl-0 = <&spi2_sck_pb13 &spi2_mosi_pb0>;
+    pinctrl-0 = <&tim3_ch3_pb0 &tim3_ch3_pb0>;
     pinctrl-names = "default";
 
     led_strip: ws2812@0 {
