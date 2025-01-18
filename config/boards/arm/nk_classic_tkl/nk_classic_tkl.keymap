@@ -5,7 +5,7 @@
  */
 #undef ZMK_BEHAVIORS_KEEP_ALL
 #define ZMK_BEHAVIORS_KEEP_LT
-#define ZMK_BEHAVIORS_KEEP_BOOTLOADER
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
