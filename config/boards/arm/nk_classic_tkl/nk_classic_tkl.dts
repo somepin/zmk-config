@@ -12,7 +12,7 @@
 #include "nk_classic_tkl-layouts.dtsi"
 
 / {
-    model = "nk_classic_tkl";
+    model = "NK_ Classic TKL";
     compatible = "nk_classic_tkl", "st,stm32f072";
 
     chosen {

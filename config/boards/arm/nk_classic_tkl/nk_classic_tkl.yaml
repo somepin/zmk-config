@@ -1,5 +1,5 @@
 identifier: nk_classic_tkl
-name: nk_classic_tkl
+name: NK_ Classic TKL
 type: mcu
 arch: arm
 toolchain:
