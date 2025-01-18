@@ -27,8 +27,15 @@
             >;
         };
 
-        extra1 {
-            status = "reserved";
+        nav_layer {
+            bindings = <
+                &trans          &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans     &trans   &trans   &trans    &trans       &trans  &trans &trans
+                &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans   &trans   &trans    &trans     &trans       &trans  &trans &trans
+                &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans   &trans   &trans    &trans     &trans       &trans  &trans &trans
+                &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans   &trans   &trans       &trans
+                &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans   &trans                        &trans               &trans
+                &trans    &trans  &trans                          &trans                                         &trans   &trans   &trans       &trans  &trans &trans
+            >;
         };
    };
 };
