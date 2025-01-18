@@ -30,7 +30,5 @@
 	           display-name = ""; };
 	    res2 { status = "reserved";
 	           display-name = ""; };
-	    res3 { status = "reserved";
-	           display-name = ""; };
    };
 };
