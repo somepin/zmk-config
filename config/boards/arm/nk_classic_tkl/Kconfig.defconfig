@@ -1,4 +1,4 @@
-# NK_CLASSIC_TKL board configuration
+# NK_ Classic TKL board configuration
 
 # Copyright (c) 2025 The ZMK Contributors
 # SPDX-License-Identifier: MIT
@@ -9,7 +9,7 @@ config BOARD
     default "nk_classic_tkl"
 
 config ZMK_KEYBOARD_NAME
-    default "nk_classic_tkl"
+    default "NK_ Classic TKL"
 
 config ZMK_USB
     default y
