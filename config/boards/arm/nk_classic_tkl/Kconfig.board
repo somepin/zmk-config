@@ -4,5 +4,5 @@
 # SPDX-License-Identifier: MIT
 
 config BOARD_NK_CLASSIC_TKL
-    bool "nk_classic_tkl"
+    bool "NK_ Classic TKL"
     depends on SOC_STM32F072XB
