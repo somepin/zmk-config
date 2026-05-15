@@ -3,69 +3,104 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 
-&lt {
-    tapping-term-ms = <120>;
-    flavor = "balanced";
-};
-
-&mt {
-    tapping-term-ms = <120>;
-    flavor = "balanced";
-};
+#define DEFAULT 0
+#define GAMING  1
+#define NUM_NAV 2
+#define SYM_FN  3
+#define ADJ     4
 
 / {
     combos {
+        /* Key positions
+             0   1   2   3   4     5   6   7   8   9
+            10  11  12  13  14    15  16  17  18  19
+            20  21  22  23  24    25  26  27  28  29
+                        30  31    32  33
+        */
+        
         compatible = "zmk,combos";
-        combo_esc {
-            timeout-ms = <27>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
-        };
-        combo_enter {
-            timeout-ms = <27>;
-            key-positions = <17 18>;
-            bindings = <&kp ENTER>;
+        
+        #define COMBO(NAME, BINDINGS, KEYPOS) \
+          combo_##NAME { \
+            bindings = <BINDINGS>; \
+            key-positions = <KEYPOS>; \
+            layers = <0 2 3 4>; \
+          };
+        
+        COMBO(clkCaps,   &kp CAPS,     7  21  25)
+        COMBO(wfEsc,     &kp ESC,      1   2)
+        COMBO(fpTab,     &kp TAB,      2   3)
+        COMBO(luDel,     &kp DEL,      6   7)
+        COMBO(uyBspc,    &kp BSPC,     7   8)
+        COMBO(yQuotScln, &kp SEMI,     8   9)
+        COMBO(khCol,     &kp COLON,   25  26)
+        COMBO(hCommEnt,  &kp RET,     26  27)
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <2 3>;
+            then-layer = <4>;
         };
     };
-};
 
-/ {
+    behaviors {
+        mtp: mod_tap_preferred {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOD_TAP_PREFERRED";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        qwerty {
+        default_layer {
             bindings = <
-                &kp TAB      &kp W  &kp E  &kp R    &kp T     &kp Y &kp U &kp I     &kp O      &kp P
-                &mt LSHIFT A &kp S  &kp D  &lt 3 F  &kp G     &kp H &kp J &kp K     &kp L      &mt RSHIFT SEMI
-                &mt LCTRL Z  &kp X  &kp C  &kp V    &kp B     &kp N &kp M &kp COMMA &kp PERIOD &mt RCTRL SLASH
-                             &kp LALT         &lt 2 SPACE     &lt 1 BACKSPACE       &kp RWIN
+    &kp Q         &kp W        &kp F          &kp P         &kp B             &kp J          &kp L         &kp U          &kp Y        &kp SQT
+    &mtp LGUI A   &mtp LALT R  &mtp LCTRL S   &mtp LSHFT T  &kp G             &kp M          &mtp RSHFT N  &mtp RCTRL E   &mtp RALT I  &mtp RGUI O
+    &kp Z         &kp X        &kp C          &kp D         &kp V             &kp K          &kp H         &kp COMMA      &kp DOT      &kp FSLH  
+                               &none    &mtp LGUI ESC       &lt NUM_NAV BSPC  &lt SYM_FN SPACE             &mtp RALT RET  &none
             >;
         };
 
-        function {
+        gaming {
             bindings = <
-                &trans    &kp F7 &kp F8 &kp F9 &kp F12          &bt BT_CLR_ALL &trans &trans &trans &trans
-                &kp LSHFT &kp F4 &kp F5 &kp F6 &kp F11          &trans &trans &trans &trans &kp RSHIFT
-                &kp LCTRL &kp F1 &kp F2 &kp F3 &kp F10          &trans &trans &trans &trans &kp RCTRL
-                              &trans         &trans             &trans         &trans
+    &kp ESC    &kp Q   &kp W      &kp E   &kp R                     &kp T         &kp Y      &kp UP     &kp I       &kp ESC    
+    &kp TAB    &kp A   &kp S      &kp D   &kp F                     &kp G         &kp LEFT   &kp DOWN   &kp RIGHT   &kp TAB    
+    &kp LSHFT  &kp Z   &kp X      &kp C   &kp V                     &kp B         &kp N      &kp M      &kp N       &kp RSHFT
+               &trans  &kp LALT           &kp SPACE                 &tog GAMING              &kp RALT   &trans
             >;
         };
 
-        symbols {
+        num_nav {
             bindings = <
-                &kp Q         &kp N7 &kp N8 &kp N9 &kp EQUAL       &trans &kp GRAVE &kp LPAR &kp RPAR &trans
-                &mt LSHIFT N0 &kp N4 &kp N5 &kp N6 &kp MINUS       &trans &kp SQT   &kp LBRC &kp RBRC &kp RSHIFT
-                &kp KP_SLASH  &kp N1 &kp N2 &kp N3 &kp KP_DOT      &trans &kp NUBS  &kp LBKT &kp RBKT &kp RCTRL
-                                       &trans          &trans      &trans   &trans
+    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5              &kp N6     &kp N7       &kp N8      &kp N9       &kp N0
+    &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &kp GRAVE           &kp LEFT   &kp DOWN     &kp UP      &kp RIGHT    &kp CAPS
+    &kp MINUS  &kp EQUAL  &kp LPAR   &kp RPAR   &kp BSLH            &kp HOME   &kp PG_DN    &kp PG_UP   &kp END      &trans     
+                          &trans     &trans     &trans              &trans     &trans       &trans
             >;
         };
 
-        navigation {
+        sym_fn {
             bindings = <
-                &trans    &kp C_VOL_DN &kp C_VOL_UP &trans &trans          &kp INS   &kp HOME     &kp UP   &kp END   &trans
-                &kp LSHFT &kp C_PREV   &kp C_NEXT   &trans &trans          &kp PG_UP &kp LEFT     &kp DOWN &kp RIGHT &kp RSHFT
-                &kp LCTRL &trans       &trans       &trans &trans          &kp PG_DN &kp LC(LEFT) &trans   &kp LC(RIGHT)    &kp RCTRL
-                                       &trans              &kp DEL         &kp ENTER    &trans
+    &kp EXCL    &kp AT     &kp HASH   &kp DLLR    &kp PRCNT          &kp CARET   &kp AMPS    &kp ASTRK   &kp F11    &kp F12
+    &kp RGUI    &kp RALT   &kp RCTRL  &kp RSHFT   &kp TILDE          &kp F1      &kp F2      &kp F3      &kp F4     &kp F5
+    &kp UNDER   &kp PLUS   &kp LBKT   &kp RBKT    &kp PIPE           &kp F6      &kp F7      &kp F8      &kp F9     &kp F10
+                           &trans     &trans     &trans              &trans      &trans      &trans
+            >;
+        };
+
+        adj {
+            bindings = <
+    &bootloader     &none   &none      &none      &none            &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2     &bt BT_SEL 3      &bt BT_SEL 4
+    &sys_reset      &none   &none      &none      &tog GAMING      &none        &none        &bt BT_CLR       &bt BT_PRV        &bt BT_NXT    
+    &none           &none   &kp LBRC   &kp RBRC   &none            &none        &none        &none            &none             &none
+                            &trans     &trans     &trans           &trans       &trans       &trans
             >;
         };
     };
