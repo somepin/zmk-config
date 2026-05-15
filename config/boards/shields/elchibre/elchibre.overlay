@@ -1,0 +1,30 @@
+#include "elchibre.dtsi"
+
+&kscan0 {
+    diode-direction = "col2row";
+    col-gpios
+        = <&gpio1 6  GPIO_ACTIVE_HIGH> //left COL0
+        , <&gpio1 4  GPIO_ACTIVE_HIGH> //left COL1
+        , <&gpio0 24 GPIO_ACTIVE_HIGH> //left COL2
+        , <&gpio0 20 GPIO_ACTIVE_HIGH> //left COL3
+        , <&gpio0 17 GPIO_ACTIVE_HIGH> //left COL4
+
+        , <&gpio0 31 GPIO_ACTIVE_HIGH> //right COL5
+        , <&gpio0 29 GPIO_ACTIVE_HIGH> //right COL6
+        , <&gpio1 15 GPIO_ACTIVE_HIGH> //right COL7
+        , <&gpio0 10 GPIO_ACTIVE_HIGH> //right COL8
+        , <&gpio0 9  GPIO_ACTIVE_HIGH> //right COL9
+        ;
+
+    row-gpios
+        = <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //left ROW0
+        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //left ROW1
+        , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //left ROW2
+        , <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //left ROW3
+
+        , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //right ROW0
+        , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //right ROW1
+        , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //right ROW2
+        , <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //right ROW3
+        ;
+};

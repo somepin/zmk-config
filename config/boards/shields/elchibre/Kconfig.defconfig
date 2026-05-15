@@ -1,0 +1,5 @@
+if SHIELD_ELCHIBRE
+    config ZMK_KEYBOARD_NAME
+        default "El Chibre"
+endif
+
